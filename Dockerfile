@@ -8,7 +8,7 @@ ENV KUBE_LATEST_VERSION="v1.8.4"
 USER root
 WORKDIR /
 RUN apk add --update -t deps curl tar gzip ca-certificates git
-RUN curl -L http://storage.googleapis.com/kubernetes-helm/${HELM_FILENAME} | tar zxv -C /tmp \
+RUN curl -L https://kubernetes-helm.storage.googleapis.com/helm-canary-linux-amd64.tar.gz | tar zxv -C /tmp \
   && cp /tmp/linux-amd64/helm /usr/local/bin/helm \
   && chmod +x /usr/local/bin/helm
 
