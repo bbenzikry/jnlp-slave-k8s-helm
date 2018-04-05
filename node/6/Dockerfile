@@ -1,5 +1,7 @@
 FROM bbenzikry/jnlp-slave-k8s-helm:latest
 
+USER root
+
 # ENV VERSION=v4.9.0 NPM_VERSION=2
 ENV VERSION=v6.14.0 NPM_VERSION=3
 # ENV VERSION=v8.11.0 NPM_VERSION=5 YARN_VERSION=latest
@@ -49,3 +51,4 @@ RUN apk add --no-cache curl make gcc g++ python linux-headers binutils-gold gnup
   rm -rf ${RM_DIRS} /node-${VERSION}* /usr/share/man /tmp/* /var/cache/apk/* \
     /root/.npm /root/.node-gyp /root/.gnupg /usr/lib/node_modules/npm/man \
     /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html /usr/lib/node_modules/npm/scripts
+USER jenkins
