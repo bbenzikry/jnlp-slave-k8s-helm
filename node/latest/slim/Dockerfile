@@ -15,9 +15,6 @@ RUN curl -L https://kubernetes-helm.storage.googleapis.com/helm-canary-linux-amd
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
  && chmod +x /usr/local/bin/kubectl
 
-RUN apk del --purge deps \
- && rm /var/cache/apk/*
-
 USER jenkins
 RUN helm init --client-only
 
