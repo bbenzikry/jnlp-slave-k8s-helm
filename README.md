@@ -1,15 +1,23 @@
-## Jenkins JNLP Agent Docker image with kubectl and helm
+## Jenkins JNLP Agent Docker image with kubectl, helm and additional build tools
 
-[![Docker Stars](https://img.shields.io/docker/stars/yonadev/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/yonadev/jnlp-slave-k8s-helm/)
-[![Docker Pulls](https://img.shields.io/docker/pulls/yonadev/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/yonadev/jnlp-slave-k8s-helm/)
-[![Docker Automated build](https://img.shields.io/docker/automated/yonadev/jnlp-slave.svg)](https://hub.docker.com/r/yonadev/jnlp-slave-k8s-helm/)
+[![Docker Stars](https://img.shields.io/docker/stars/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
+[![Docker Automated build](https://img.shields.io/docker/automated/yonadev/jnlp-slave.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
 
 This image allows for a slave deployed into a k8s cluster to be able to run kubectl and helm commands
 
-We use it for CD actions from Jenkins
+Based on [yonadev/jnlp-slave-k8s-helm](https://hub.docker.com/r/yonadev/jnlp-slave-k8s-helm/)
+which in turn is based on the Jenkins official jnlp-slave image @ https://hub.docker.com/r/jenkinsci/jnlp-slave/.
 
-Based on Jenkins official jnlp-slave image https://hub.docker.com/r/jenkinsci/jnlp-slave/
-kubectl and helm are added in.
+### What's included:
+* kubectl
+* helm
+* dotnet sdk
+
+## Building images on a slave(without DIND)
+TBD
+
+
 
 ## Running
 
@@ -49,10 +57,10 @@ The server component (tiller) needs to be at a compatible version.   `kubectl ex
 ### Enabled JNLP protocols
 
 By default, the [JNLP3-connect](https://github.com/jenkinsci/remoting/blob/master/docs/protocols.md#jnlp3-connect) is disabled due to the known stability and scalability issues.
-You can enable this protocol on your own risk using the 
+You can enable this protocol on your own risk using the
 `JNLP_PROTOCOL_OPTS=-Dorg.jenkinsci.remoting.engine.JnlpProtocol3.disabled=false` property (the protocol should be enabled on the master side as well).
 
-In Jenkins versions starting from `2.27` there is a [JNLP4-connect](https://github.com/jenkinsci/remoting/blob/master/docs/protocols.md#jnlp4-connect) protocol. 
+In Jenkins versions starting from `2.27` there is a [JNLP4-connect](https://github.com/jenkinsci/remoting/blob/master/docs/protocols.md#jnlp4-connect) protocol.
 If you use Jenkins `2.32.x LTS`, it is recommended to enable the protocol on your instance.
 
 ### Amazon ECS
