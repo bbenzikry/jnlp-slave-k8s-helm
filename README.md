@@ -2,7 +2,7 @@
 
 [![Docker Stars](https://img.shields.io/docker/stars/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
-[![Docker Automated build](https://img.shields.io/docker/automated/yonadev/jnlp-slave.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
+[![Docker Automated build](https://img.shields.io/docker/automated/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
 
 This image allows for a slave deployed into a k8s cluster to be able to run kubectl and helm commands
 
@@ -13,21 +13,23 @@ which in turn is based on the Jenkins official jnlp-slave image @ https://hub.do
 * kubectl
 * helm
 * dotnet sdk
+* img
+
 
 ## Building images on a slave(without DIND)
-TBD
 
 
+## Other slaves
+See the [slaves](./slaves/) folder for other versions of the JNLP slave, without k8s access.
 
 ## Running
-
 To run a Docker container
 
-    docker run yonadev/jnlp-slave-k8s-helm -url http://jenkins-server:port <secret> <agent name>
+    docker run bbenzikry/jnlp-slave-k8s-helm -url http://jenkins-server:port <secret> <agent name>
 
 To run a Docker container with [Work Directory](https://github.com/jenkinsci/remoting/blob/master/docs/workDir.md):
 
-    docker run yonadev/jnlp-slave-k8s-helm -url http://jenkins-server:port -workDir=/home/jenkins/agent <secret> <agent name>
+    docker run bbenzikry/jnlp-slave-k8s-helm -url http://jenkins-server:port -workDir=/home/jenkins/agent <secret> <agent name>
 
 Optional environment variables:
 

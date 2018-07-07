@@ -5,12 +5,6 @@ USER root
 
 # Switch to root for build, avoid jenkins USER
 
-ENV HELM_VERSION v2.8.1
-ENV HELM_FILENAME helm-${HELM_VERSION}-linux-amd64.tar.gz
-
-# Change this to your appropriate kube version
-ENV KUBE_LATEST_VERSION="v1.8.4"
-
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false \
     LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8
@@ -27,8 +21,6 @@ ENV DOTNET_SDK_VERSION 2.1.301
 ENV DOTNET_USE_POLLING_FILE_WATCHER=true \
 # Skip extraction of XML docs - generally not useful within an image/container - helps perfomance
     NUGET_XMLDOC_MODE=skip
-
-
 
 WORKDIR /
 
@@ -63,21 +55,7 @@ RUN apk add --no-cache --virtual .build-deps \
 # Trigger first run experience by running arbitrary cmd to populate local package cache
 RUN dotnet help
 
-RUN curl -L https://kubernetes-helm.storage.googleapis.com/helm-canary-linux-amd64.tar.gz | tar zxv -C /tmp \
-  && cp /tmp/linux-amd64/helm /usr/local/bin/helm \
-  && chmod +x /usr/local/bin/helm
-
-# Install img
-COPY ./installers/img.sh .
-RUN chmod +x ./img.sh && ./img.sh && rm img.sh
-
-
-# Install kubectl
-RUN curl -L https://storage.googleapis.com/kubernetes-release/release/${KUBE_LATEST_VERSION}/bin/linux/amd64/kubectl -o /usr/local/bin/kubectl \
- && chmod +x /usr/local/bin/kubectl
-
 RUN apk del --purge deps \
  && rm /var/cache/apk/*
 
 USER jenkins
-RUN helm init --client-only
