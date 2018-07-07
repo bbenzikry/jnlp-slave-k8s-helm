@@ -2,7 +2,7 @@
 
 [![Docker Stars](https://img.shields.io/docker/stars/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
-[![Docker Automated build](https://img.shields.io/docker/automated/yonadev/jnlp-slave.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
+[![Docker Automated build](https://img.shields.io/docker/automated/bbenzikry/jnlp-slave-k8s-helm.svg)](https://hub.docker.com/r/bbenzikry/jnlp-slave-k8s-helm/)
 
 This image allows for a slave deployed into a k8s cluster to be able to run kubectl and helm commands
 
@@ -16,8 +16,6 @@ which in turn is based on the Jenkins official jnlp-slave image @ https://hub.do
 
 ## Building images on a slave(without DIND)
 TBD
-
-
 
 ## Running
 
