@@ -17,10 +17,11 @@ which in turn is based on the Jenkins official jnlp-slave image @ https://hub.do
 
 
 ## Building images on a slave(without DIND)
+TBD
 
-
-## Other slaves
+## Other types of slaves
 See the [slaves](./slaves/) folder for other versions of the JNLP slave, without k8s access.
+These slaves are published under the [jenkins-slaves](https://hub.docker.com/r/bbenziky/jenkins-slaves) repo
 
 ## Running
 To run a Docker container
